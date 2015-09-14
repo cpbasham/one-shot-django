@@ -44,7 +44,7 @@ INSTALLED_APPS = (
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    # 'django.contrib.staticfiles',
+    'django.contrib.staticfiles',
     'user_extension',
     'compressor',
 )
@@ -110,9 +110,14 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 STATIC_URL = "/static/"
-STATIC_ROOT = "/assets/"
+STATIC_ROOT = "assets/"
 STATICFILES_DIRS = (
-    "/one_shot/assets",
+    "one_shot/assets/",
+)
+STATICFILES_FINDERS = (
+    "compressor.finders.CompressorFinder",
+    "django.contrib.staticfiles.finders.FileSystemFinder",
+    "django.contrib.staticfiles.finders.AppDirectoriesFinder",
 )
 
 
@@ -120,9 +125,4 @@ STATICFILES_DIRS = (
 COMPRESS_ENABLED = True # setting to false won't affect scss because I set a precompiler below
 COMPRESS_PRECOMPILERS = (
     ('text/scss', 'sass --scss {infile} {outfile}'),
-)
-STATICFILES_FINDERS = (
-    "django.contrib.staticfiles.finders.FileSystemFinder",
-    "django.contrib.staticfiles.finders.AppDirectoriesFinder",
-    "compressor.finders.CompressorFinder",
 )

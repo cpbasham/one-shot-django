@@ -51,3 +51,6 @@ docs/_build/
 
 # Application secrets
 one_shot/secret_settings.py
+
+# Application's collected assets
+assets/*
