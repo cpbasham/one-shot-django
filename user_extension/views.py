@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, Http404
 from django.contrib.auth import authenticate, login
 
 from .forms import *
@@ -21,7 +21,15 @@ def index(request):
 
 @handle_methods("POST")
 def login(request):
-	return render(request, 'user_extension/login.html', {'form': LoginForm()})
+	form = LoginForm(request.POST, label_suffix="")
+	if form.is_valid():
+		username = form.cleaned_data['username']
+		password = form.cleaned_data['password']
+		user = authenticate(username=username, password=password)
+		if user is not None:
+			login(request, user)
+			return HttpResponse("Login POSTED")
+	return render(request, 'user_extension/login.html', {'form': form})
 def post_login(request):
 	return HttpResponse("Login POSTED")
 
@@ -34,9 +42,14 @@ def post_register(request):
 		username = form.cleaned_data['username']
 		password = form.cleaned_data['password']
 		user = User.objects.create_user(username=username, password=password)
-		# user = authenticate(username=username, password=password)
 		login(request, user)
 		return HttpResponse("Registration POSTED")
 	else:
-		# print form.cleaned_data
 		return render(request, 'user_extension/register.html', {'form': form})
+
+@handle_methods("POST")
+def logout(request):
+	raise Http404()
+
+def post_logout(request):
+	logout(request)
