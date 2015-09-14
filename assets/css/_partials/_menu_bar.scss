@@ -1,0 +1,87 @@
+.menu-bar.item-set-modifiers {
+  position: relative;
+  margin-top: 20px;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  height: $modifiers-bar-height;
+  line-height: $modifiers-bar-height;
+  & button {
+    width: 100%;
+    color: $primary-color;
+    background-color: $secondary-color;
+  }
+
+  & .map-selector {
+    display: block;
+    width: 100%;
+  }
+  & input {
+    height: $modifiers-bar-height;
+    width: 100%;
+    background-color: lighten($secondary-color, 5%);
+    color: $primary-color;
+    padding: 0;
+    font-weight: bold;
+    text-align: center;
+    &::-webkit-input-placeholder {
+      color: $primary-color;
+      opacity: 0.3;
+    }
+    &:-moz-placeholder {
+        color: $primary-color;
+      opacity: 0.3;
+    }
+    &::-moz-placeholder {
+        color: $primary-color;
+      opacity: 0.3;
+    }
+    &:-ms-input-placeholder {
+        color: $primary-color;
+      opacity: 0.3;
+    }
+  }
+  & ul {
+    height: $modifiers-bar-height;
+    border-top: 1px solid black;
+  }
+  & ul li {
+    height: $modifiers-bar-height;
+    line-height: $modifiers-bar-height;
+    width: 100%;
+    // float: left;
+    border: 1px solid black;
+    border-top: none;
+    border-collapse: collapse;
+    display: none;
+    text-align: center;
+    color: $primary-color;
+    background-color: $secondary-color;
+    // margin-bottom: 0;
+    cursor: default;
+    &:first-child {
+      display: list-item;
+      background-color: darken($secondary-color, 2%);
+    }
+    &:hover {
+      background-color: darken($secondary-color, 5%);
+    }
+    &.unviable {
+      background-color: darken($primary-color, 10%);
+      // color: $secondary-color;
+      color: red;
+      font-style: italic;
+    }
+  }
+}
+
+div.menu-bar.champion-select {
+  text-align: center;
+  margin: 2em 0;
+  line-height: $modifiers-bar-height;
+  & input {
+    height: $modifiers-bar-height;
+    background-color: #333;
+    color: lighten($primary-color, 10%);
+  }
+}

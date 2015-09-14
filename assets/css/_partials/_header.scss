@@ -1,0 +1,40 @@
+header {
+  top: 0;
+  height: $header-height;
+  width: 100%;
+  color: $primary-color;
+  background-color: $secondary-color;
+  line-height: $header-height;
+  position: fixed;
+  z-index: 1;
+
+  & div {
+    position: relative;
+    &.header-left {
+      float: left;
+      margin-left: 0.25em;
+    }
+    &.header-right {
+      float: right;
+      margin-right: .5em;
+    }
+  }
+  & a {
+    color: $primary-color;
+    background-color: lighten($secondary-color, 10%);
+    padding: .25em;
+    margin-left: .25em;
+  }
+  & h1 {
+    position: relative;
+    margin: 0;
+    top: 0.025em;
+    font-size: 1.5em;
+    color: $primary-color;
+  }
+}
+
+.header-filler {
+  position: relative;
+  height: $header-height;
+}

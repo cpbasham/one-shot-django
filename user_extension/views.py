@@ -1,7 +1,19 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, Http404
 from django.contrib import auth
-from one_shot.utils import handle_methods
+# from one_shot.utils import handle_methods
+def handle_methods(*methods):
+	def decorator(f):
+		def wrapper(request, *args, **kw):
+			for method in methods:
+				if request.method == method.upper():
+					print globals()
+			  		func = globals()[method.lower() + "_" + f.__name__]
+			  		return func(request)
+			return f(request)
+		return wrapper
+	return decorator
+
 
 from .forms import *
 
@@ -49,5 +61,5 @@ def logout(request):
 	raise Http404()
 
 def post_logout(request):
-	logout(request)
-	return redirect('user:index')
+	auth.logout(request)
+	return redirect('user:home')

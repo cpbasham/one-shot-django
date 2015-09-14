@@ -1,17 +1,27 @@
 {% load static from staticfiles %}
+{% load compress %}
 
 <!doctype html>
 <html>
 <head>
   <title>{% block title %}{% endblock title %}</title>
-  <link rel="stylesheet" href="{% static 'css/layout.css' %}">
+  {% compress css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/normalize.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/pure-release-0.6.0/pure-min.css' %}">
+    <link rel="stylesheet" type="text/scss" href="{% static 'css/application.scss' %}" />
+  {% endcompress %}
+  {% compress js %}
+    <script type="text/javascript" src="{% static 'js/jquery-1.11.3.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/application.js' %}"></script>
+  {% endcompress %}
 </head>
 <body>
   <div class="site-container">
     <nav>
       <a href="{% url 'user:home' %}">Home</a>
       {% if logged_in %}
-        <a href="{% url 'user:logout' %}">Logout</a>
+        <form name='logout' action="{% url 'user:logout' %}" method="post" style="display:none;">{% csrf_token %}</form>
+        <a href="javascript:document.forms['logout'].submit()">Logout</a>
       {% else %}
         <a href="{% url 'user:login' %}">Login</a>
         <a href="{% url 'user:register' %}">Register</a>

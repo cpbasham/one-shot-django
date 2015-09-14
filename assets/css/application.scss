@@ -1,0 +1,25 @@
+@import "_partials/_main.scss";
+@import "_partials/_header.scss";
+@import "_partials/_menu_bar.scss";
+@import "_partials/_item_list.scss";
+@import "_partials/_item_set.scss";
+@import "_partials/_profile.scss";
+
+div.save-div {
+  display: block;
+  text-align: center;
+  & button {
+    display: block;
+    margin: auto;
+  }
+}
+
+div#footer {
+  margin-top: 15px;
+  bottom: 0;
+  height: 2.5em;
+  text-align: center;
+  width: 100%;
+  background-color: $secondary-color;
+  color: $primary-color;
+}
