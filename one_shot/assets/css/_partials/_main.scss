@@ -7,7 +7,8 @@ $item-size: 46px;
 
 *, *:before, *:after {
   box-sizing: border-box;
-  outline: none;
+  // outline: none;
+  outline: 1px dotted red;
 }
 
 h1,h2,h3,h4,h5,h6,form {
