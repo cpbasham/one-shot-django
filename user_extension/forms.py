@@ -2,12 +2,11 @@ from django import forms
 from django.contrib.auth.models import User
 
 
-class LoginForm(forms.ModelForm):
-	class Meta:
-		model = User
-		fields = ['username', 'password']
-		widgets = {'password': forms.PasswordInput()}
-		help_texts = {'username': ""}
+class LoginForm(forms.Form):
+	username = forms.CharField(label="Username")
+	password = forms.CharField(label="Password", widget=forms.PasswordInput)
+	# def clean(self):
+
 
 class RegisterForm(forms.ModelForm):
 	password_confirmation = forms.CharField(label="Confirmation", widget=forms.PasswordInput)
