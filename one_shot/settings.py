@@ -122,6 +122,7 @@ STATICFILES_FINDERS = (
 
 
 # Compressor
+# COMPRESS_OFFLINE = True
 COMPRESS_ENABLED = True # setting to false won't affect scss because I set a precompiler below
 COMPRESS_PRECOMPILERS = (
     ('text/scss', 'sass --scss {infile} {outfile}'),

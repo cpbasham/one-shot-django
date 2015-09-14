@@ -1,0 +1,19 @@
+{% load compress %}
+
+  <link rel="stylesheet" type="text/css" href="/static/css/normalize.css">
+  <link rel="stylesheet" type="text/css" href="/static/css/pure-release-0.6.0/pure-min.css">
+  {% compress css %}
+    <link rel="stylesheet" type="text/scss" href="/static/css/application.scss">
+  {% endcompress %}
+
+    <script type="text/javascript" src="/static/js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+
+  {% compress js %}
+    <script type="text/javascript" src="/static/js/application.js"></script>
+    <script type="text/javascript" src="/static/js/profile.js"></script>
+    <script type="text/javascript" src="/static/js/menuBars.js"></script>
+    <script type="text/javascript" src="/static/js/itemList.js"></script>
+    <script type="text/javascript" src="/static/js/itemSet.js"></script>
+    <script type="text/javascript" src="/static/js/edit.js"></script>
+  {% endcompress %}
