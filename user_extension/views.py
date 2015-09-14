@@ -1,8 +1,11 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, Http404
 from django.contrib import auth
+from .forms import *
 # from one_shot.utils import handle_methods
+
 def handle_methods(*methods):
+	"""A decorator to delegate various request types to their corresponding methods."""
 	def decorator(f):
 		def wrapper(request, *args, **kw):
 			for method in methods:
@@ -14,8 +17,6 @@ def handle_methods(*methods):
 		return wrapper
 	return decorator
 
-
-from .forms import *
 
 def index(request):
 	return render(request, 'user_extension/index.html', {'user': request.user, 'logged_in': request.user.is_authenticated()})

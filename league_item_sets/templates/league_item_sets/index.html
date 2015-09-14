@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+{% block title %}Item Sets{% endblock %}
+
+{% block content %}
+<h1>Item Sets</h1>
+Username: {{ user.username }}<br>
+<a href="/item_sets/new">Create new set</a><br><br>
+<h3>Item Sets</h3>
+<table style="text-align: center">
+  <tr>
+    <th style="padding: 0 10px; text-align: center">ID</th>
+    <th style="padding: 0 10px; text-align: center">Set Name</th>
+    <th style="padding: 0 10px; text-align: center">Map</th>
+    <th style="padding: 0 10px; text-align: center">Game Type</th>
+    <th style="padding: 0 10px; text-align: center"></th>
+    <th style="padding: 0 10px; text-align: center"></th>
+  </tr>
+  {% for set in item_sets %}
+  <tr>
+    <td style="padding: 0 10px; text-align: center">{{ set.id }}</td>
+    <td style="padding: 0 10px; text-align: center">{{ set.name }}</td>
+    <td style="padding: 0 10px; text-align: center">{{ set.map }}</td>
+    <td style="padding: 0 10px; text-align: center">{{ set.game_type }}</td>
+    <td style="padding: 0 10px; text-align: center"><a href="/item_sets/{{set.id}}">Open</a>
+    <td style="padding: 0 10px; text-align: center"><a class="delete" href="#">Delete</a>
+  </tr>
+  {% endfor %}
+</table>
+{% endblock %}
