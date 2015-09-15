@@ -4,6 +4,6 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from . import views
 
 urlpatterns = [
-	url(r'^$', views.index, name="index"),
-	url(r'(?P<itemset_pk>\d+)/edit$', views.edit, name="edit"),
+	url(r'^items/?$', views.item_availability, name="item_availability"),
+	url(r'^item_sets/(?P<itemset_pk>\d+)?$', views.update, name="update_set"),
 ]

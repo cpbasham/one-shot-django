@@ -6,20 +6,20 @@
   <div class="pure-u-1-5"></div>
   <div class="pure-u-1-5">
     <ul class="no-indent map-selector">
-      <li {% if item_set.map == "any" %} data-top='true' {% endif %} data-pos="1" data-map="any">Any Map</li>
-      <li {% if item_set.map ==  "SR" %} data-top='true' {% endif %} data-pos="2" data-map="SR">Summoner's Rift</li>
-      <li {% if item_set.map ==  "TT" %} data-top='true' {% endif %} data-pos="3" data-map="TT">Twisted Treeline</li>
-      <li {% if item_set.map ==  "HA" %} data-top='true' {% endif %} data-pos="4" data-map="HA" class="unviable">Howling Abyss</li>
-      <li {% if item_set.map == "CS" %} data-top='true' {% endif %} data-pos="5" data-map="CS" class="unviable">Crystal Scar</li>
+      <li {% if item_set_data.map == "any" %} data-top='true' {% endif %} data-pos="1" data-map="any">Any Map</li>
+      <li {% if item_set_data.map ==  "SR" %} data-top='true' {% endif %} data-pos="2" data-map="SR">Summoner's Rift</li>
+      <li {% if item_set_data.map ==  "TT" %} data-top='true' {% endif %} data-pos="3" data-map="TT">Twisted Treeline</li>
+      <li {% if item_set_data.map ==  "HA" %} data-top='true' {% endif %} data-pos="4" data-map="HA" class="unviable">Howling Abyss</li>
+      <li {% if item_set_data.map == "CS" %} data-top='true' {% endif %} data-pos="5" data-map="CS" class="unviable">Crystal Scar</li>
     </ul>
   </div>
   <div class="pure-u-1-5"></div>
   <div class="pure-u-1-5">
     <ul class="no-indent game-type-selector">
-      <li {% if item_set.game_type == "any" %} data-top='true' {% endif %} data-pos="1" data-game-type="any">Any Mode</li>
-      <li {% if item_set.game_type == "CLASSIC" %} data-top='true' {% endif %} data-pos="2" data-game-type="CLASSIC">Classic</li>
-      <li {% if item_set.game_type == "ARAM" %} data-top='true' {% endif %} data-pos="3" data-game-type="ARAM">ARAM</li>
-      <li {% if item_set.game_type == "ODIN" %} data-top='true' {% endif %} data-pos="4" data-game-type="ODIN" class="unviable">Dominion</li>
+      <li {% if item_set_data.game_type == "any" %} data-top='true' {% endif %} data-pos="1" data-game-type="any">Any Mode</li>
+      <li {% if item_set_data.game_type == "CLASSIC" %} data-top='true' {% endif %} data-pos="2" data-game-type="CLASSIC">Classic</li>
+      <li {% if item_set_data.game_type == "ARAM" %} data-top='true' {% endif %} data-pos="3" data-game-type="ARAM">ARAM</li>
+      <li {% if item_set_data.game_type == "ODIN" %} data-top='true' {% endif %} data-pos="4" data-game-type="ODIN" class="unviable">Dominion</li>
     </ul>
   </div>
 </div>
@@ -44,8 +44,8 @@
   </div>
   <div class="pure-u-1-24"></div>
   <div class="pure-u-1-3">
-    <div class="item-set-container" data-set-id="{{ item_set.id }}">
-      <input type="text" class="item-set-name" placeholder="Set Name" value="{{ item_set.name }}">
+    <div class="item-set-container" data-set-id="{{ item_set_data.id }}">
+      <input type="text" class="item-set-name" placeholder="Set Name" value="{{ item_set_data.name }}">
       <div class="row-container">
         {% include "league_item_sets/_item_row_index.html" %}
       </div>

@@ -1,16 +1,14 @@
 var lis = $("li[data-top='true']");
-if (lis.length !== 0) {
-  // console.log(lis);
+// console.log(lis);
 
-  // console.log(e);
-  bringToTop($(lis[0]));
-  $(lis[0]).data("top", "");
-  bringToTop($(lis[1]));
-  $(lis[1]).data("top", "");
+// console.log(e);
+bringToTop($(lis[0]));
+$(lis[0]).data("top", "");
+bringToTop($(lis[1]));
+$(lis[1]).data("top", "");
 
-  specifyItemsByMap($(lis[0]).data("map"), "");
+specifyItemsByMap($(lis[0]).data("map"), "");
 
 
-  var newRow = $("div.row-items");
-  newRow.find("ul").droppable({drop: itemSetReceiver});
-}
+var newRow = $("div.row-items");
+newRow.find("ul").droppable({drop: itemSetReceiver});

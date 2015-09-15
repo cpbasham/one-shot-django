@@ -11,10 +11,15 @@
   <script type="text/javascript" src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
 
   {% compress js %}
-  <script type="text/javascript" src="{%static 'js/application.js' %}"></script>
-  <script type="text/javascript" src="{%static 'js/profile.js' %}"></script>
-  <script type="text/javascript" src="{%static 'js/menuBars.js' %}"></script>
-  <script type="text/javascript" src="{%static 'js/itemList.js' %}"></script>
-  <script type="text/javascript" src="{%static 'js/itemSet.js' %}"></script>
-  <script type="text/javascript" src="{%static 'js/edit.js' %}"></script>
+  {% if profile %}
+    script type="text/javascript" src="{%static 'js/profile.js' %}"></script>
+  {% else %}
+    <script type="text/javascript" src="{%static 'js/menuBars.js' %}"></script>
+    <script type="text/javascript" src="{%static 'js/itemList.js' %}"></script>
+    <script type="text/javascript" src="{%static 'js/itemSet.js' %}"></script>
+    <script type="text/javascript" src="{%static 'js/application.js' %}"></script>
+    {% if edit %}
+      <script type="text/javascript" src="{%static 'js/edit.js' %}"></script>
+    {% endif %}
+  {% endif %}
   {% endcompress %}

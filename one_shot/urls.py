@@ -22,4 +22,5 @@ urlpatterns = [
 	url(r'^$', "league_item_sets.views.index"),
 	url(r'^user/', include('user_extension.urls', namespace='user')),
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^', include('league_item_sets.ajax_urls', namespace='ajax'))
 ]

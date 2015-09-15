@@ -4,7 +4,6 @@
 <html>
 <head>
   <title>{% block title %}{% endblock title %}</title>
-  {% include "includes/load_statics.html" %}
 </head>
 <body>
   <div class="site-container">
@@ -20,5 +19,6 @@
     </nav>
     {% block content %}{% endblock content %}
   </div>
+  {% include "includes/load_statics.html" %}
 </body>
 </html>
