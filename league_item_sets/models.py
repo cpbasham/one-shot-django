@@ -2,10 +2,15 @@ from django.db import models
 from django.conf import settings
 
 # Create your models here.
+class Item(models.Model):
+	created_at = models.DateTimeField(auto_now_add=True)
+	api_id = models.IntegerField()
+	parent_row = models.ForeignKey("ItemRow")
+
 class ItemRow(models.Model):
 	created_at = models.DateTimeField(auto_now_add=True)
 	name = models.CharField(max_length=64)
-	item_set = models.ForeignKey("ItemSet")
+	parent_set = models.ForeignKey("ItemSet")
 
 class ItemSet(models.Model):
 	created_at = models.DateTimeField(auto_now_add=True)
