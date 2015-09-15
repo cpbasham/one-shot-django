@@ -15,7 +15,27 @@ def edit(request, itemset_pk):
 	itemset = get_object_or_404(ItemSet, pk=itemset_pk)
 	if itemset.creator_id != request.user.id:
 		return redirect(reverse_lazy("user:itemsets:index"))
-	return render(request, 'league_item_sets/edit.html', {'item_data': get_items(), 'item_set': itemset, 'ITEM_SPRITE_HEAD': ITEM_SPRITE_HEAD})
+
+	item_data = get_items()
+
+	setdata = {}
+	setdata["id"] = itemset.id
+	setdata["name"] = itemset.name
+	setdata["rows"] = []
+	for row in itemset.itemrow_set.all():
+		rowdata = {}
+		rowdata["id"] = row.id
+		rowdata["name"] = row.name
+		rowdata["items"] = []
+		for item in row.item_set.all():
+			itemdata = {}
+			itemdata["id"] = item.id
+			itemdata["api_id"] = item.api_id
+			itemdata["data"] = item_data[str(item.api_id)]
+			rowdata["items"].append(itemdata)
+		setdata["rows"].append(rowdata)
+
+	return render(request, 'league_item_sets/edit.html', {'item_data': item_data, 'item_set_data': setdata, 'ITEM_SPRITE_HEAD': ITEM_SPRITE_HEAD})
 
 
 
