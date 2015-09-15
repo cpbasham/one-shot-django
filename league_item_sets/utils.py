@@ -17,6 +17,7 @@ REGION = "na"
 REALM_DATA = get(full_url("/api/lol/static-data/%s/v1.2/realm" %REGION))
 DD_UL_HEAD = REALM_DATA["cdn"]
 ITEM_DD_VERSION = REALM_DATA["n"]["item"]
+ITEM_SPRITE_HEAD = "%s/%s/img/sprite" %(DD_UL_HEAD, REALM_DATA["n"]['item'])
 
 def get_items():
 	url = full_url("/api/lol/static-data/%s/v1.2/item" %REGION,

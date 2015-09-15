@@ -2,7 +2,7 @@ from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse_lazy # reverse causes circular import
 from django.http import HttpResponse, Http404
 from django.shortcuts import render, get_object_or_404
-from .utils import get_items
+from .utils import get_items, ITEM_SPRITE_HEAD
 from .models import *
 
 # Create your views here.
@@ -15,7 +15,7 @@ def edit(request, itemset_pk):
 	itemset = get_object_or_404(ItemSet, pk=itemset_pk)
 	if itemset.creator_id != request.user.id:
 		return redirect(reverse_lazy("user:itemsets:index"))
-	return render(request, 'league_item_sets/edit.html', {'item_data': get_items(), 'item_set': itemset})
+	return render(request, 'league_item_sets/edit.html', {'item_data': get_items(), 'item_set': itemset, 'ITEM_SPRITE_HEAD': ITEM_SPRITE_HEAD})
 
 
 
