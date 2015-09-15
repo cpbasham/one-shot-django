@@ -8,8 +8,5 @@
 <h6>How It Works</h6>
 <p>The workflow in One_Shot is fairly simple.  A user must first log in or register before moving on to their profile (which currently is just a list of their item sets).  From there they can edit or delete existing sets, or create a new one.  Creating or editing a set will take them to the main editor page.  This page is the meat of the app, and all of its communication with the server is done through AJAX in order to make One_Shot mostly function as a single-page app.</p>
 
-<h6>Live Demo</h6>
-<a href="https://www.youtube.com/embed/NAiDmB00o7o">Live Demo</a>
-
-<h6>Code Overview</h6>
-<p>Not available</p>
+<h6>Videos</h6>
+<a href="https://www.youtube.com/watch?v=NAiDmB00o7o&list=PLgdGEtQdKwP4MpGcHLkEDmLlJd8bgXyXI">App Walkthrough</a>
