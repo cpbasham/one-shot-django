@@ -4,7 +4,8 @@
 {% block content %}
 <h1>Item Sets</h1>
 Username: {{ user.username }}<br>
-<a href="/item_sets/new">Create new set</a><br><br>
+{% url 'user:itemsets:new_item_set' as new_set %}
+<a href="{{ new_set }}">Create new set</a><br><br>
 <h3>Item Sets</h3>
 <table style="text-align: center">
   <tr>

@@ -5,5 +5,6 @@ from . import views
 
 urlpatterns = [
 	url(r'^$', views.index, name="index"),
-	url(r'(?P<itemset_pk>\d+)/edit$', views.edit, name="edit"),
+	url(r'(?P<itemset_pk>\d+)/edit$', views.edit, name="edit_set"),
+	url(r'new$', views.new_item_set, name="new_item_set"),
 ]

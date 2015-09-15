@@ -20,7 +20,7 @@ $("div.item-set-container").on("click", "div.new-row", function(evt) {
 function itemSetReceiver( e, ui ) {
   e.preventDefault();
   e.stopPropagation();
-  var li = $('<li><span data-type="item" data-id="' + ui.draggable.data("id") + '" title="' + ui.draggable.attr("title") + '" style="' + ui.draggable.attr("style") + '" class="sprite"></span></li>');
+  var li = $('<li><span data-type="item" data-api-id="' + ui.draggable.data("id") + '" title="' + ui.draggable.attr("title") + '" style="' + ui.draggable.attr("style") + '" class="sprite"></span></li>');
   li.appendTo(e.target);
   var categoryId = li.parents("div.item-set-row-container").data("rowId");
   $.ajax({
@@ -29,9 +29,7 @@ function itemSetReceiver( e, ui ) {
     data: "item_id=" + ui.draggable.data("id"),
     dataType: "json"
   }).done(function(data) {
-    // console.log("HEY");
-    li.find("span").data("ar-id", data["ar-id"]);
-    // console.log(li.find("span"));
+    li.find("span").data("id", data["id"]);
   });
   // console.log(li.parents("div.item-set-row-container"));
   // console.log(ui.helper);
@@ -39,9 +37,9 @@ function itemSetReceiver( e, ui ) {
 
 $("div.item-set-container").on("dblclick", "span.sprite", function(e) {
   var target = $(e.target);
-  var arId = target.data("arId");
+  var id = target.data("id");
   $.ajax({
-    url: "/items/" + arId,
+    url: "/items/" + id,
     method: "DELETE"
   }).done(function() {
     target.parent().remove();

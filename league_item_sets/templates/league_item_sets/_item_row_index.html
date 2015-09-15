@@ -10,7 +10,7 @@
         {% for item in row.items %}
 
 
-            <li><span data-type="item" data-purchasable="true" data-id="{{item.id}}" data-ar-id="{{ item.api_id }}" title="{{ item.data.name }}" class="sprite"
+            <li><span data-type="item" data-purchasable="true" data-id="{{item.id}}" data-api-id="{{ item.api_id }}" title="{{ item.data.name }}" class="sprite"
               style="background-image: url('{{ITEM_SPRITE_HEAD}}/{{item.data.image.sprite}}'); background-position: -{{item.data.image.x}}px -{{item.data.image.y}}px"
               ></span></li>
 

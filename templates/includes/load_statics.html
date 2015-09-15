@@ -1,25 +1,19 @@
 {% load static from staticfiles %}
 {% load compress %}
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
 
-  {% compress css %}
-  <link rel="stylesheet" type="text/css" href="{%static 'css/normalize.css' %}">
-  <link rel="stylesheet" type="text/css" href="{%static 'css/pure-release-0.6.0/pure-min.css' %}">
-    <link rel="stylesheet" type="text/scss" href="{%static 'css/application.scss' %}">
-  {% endcompress %}
-
-  <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
-  <script type="text/javascript" src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
-
-  {% compress js %}
-  {% if profile %}
-    script type="text/javascript" src="{%static 'js/profile.js' %}"></script>
-  {% else %}
-    <script type="text/javascript" src="{%static 'js/menuBars.js' %}"></script>
-    <script type="text/javascript" src="{%static 'js/itemList.js' %}"></script>
-    <script type="text/javascript" src="{%static 'js/itemSet.js' %}"></script>
-    <script type="text/javascript" src="{%static 'js/application.js' %}"></script>
-    {% if edit %}
-      <script type="text/javascript" src="{%static 'js/edit.js' %}"></script>
-    {% endif %}
+{% compress js %}
+  <script type="text/javascript" src="{%static 'js/ajaxSetup.js' %}"></script>
+{% if profile %}
+  <script type="text/javascript" src="{%static 'js/profile.js' %}"></script>
+{% else %}
+  <script type="text/javascript" src="{%static 'js/menuBars.js' %}"></script>
+  <script type="text/javascript" src="{%static 'js/itemList.js' %}"></script>
+  <script type="text/javascript" src="{%static 'js/itemSet.js' %}"></script>
+  <script type="text/javascript" src="{%static 'js/application.js' %}"></script>
+  {% if edit %}
+    <script type="text/javascript" src="{%static 'js/edit.js' %}"></script>
   {% endif %}
-  {% endcompress %}
+{% endif %}
+{% endcompress %}
