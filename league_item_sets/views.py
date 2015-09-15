@@ -71,6 +71,7 @@ def update_row(request, itemrow_pk):
 		item = Item.objects.create(api_id=request.POST.get("item_id"), parent_row=item_row)
 		return JsonResponse({'id': item.id})
 
+# AJAX
 def new_row(request, itemset_pk):
 	if request.method == "GET":
 		if request.is_ajax():
@@ -78,6 +79,7 @@ def new_row(request, itemset_pk):
 			row = ItemRow.objects.create(parent_set=item_set)
 			return render(request, 'league_item_sets/_new_row.html', {'id': row.id})
 
+# AJAX
 def delete_row(request, itemrow_pk):
 	if request.method == "GET":
 		return redirect("/")
@@ -92,7 +94,7 @@ def delete_row(request, itemrow_pk):
 		row.delete()
 		return HttpResponse()
 
-
+# AJAX
 def delete_item(request, item_pk):
 	if request.method == "GET":
 		return redirect("/")
@@ -101,7 +103,7 @@ def delete_item(request, item_pk):
 		item.delete()
 		return HttpResponse()
 
-
+# AJAX
 @login_required(login_url=reverse_lazy("user:login"))
 def new_item_set(request):
 	if request.method == "GET":

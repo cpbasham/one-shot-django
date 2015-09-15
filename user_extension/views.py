@@ -20,7 +20,6 @@ def handle_methods(*methods):
 @handle_methods("POST")
 def login(request):
 	if request.user.is_authenticated():
-		print("YOU TRIED TO LOG IN BUT YOU'RE ALREADY LOGGED IN")
 		return redirect('user:home')
 	else:
 		return render(request, 'user_extension/login.html',
