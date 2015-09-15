@@ -15,9 +15,11 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
+from django.core.urlresolvers import reverse, reverse_lazy
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns = [
+	url(r'^$', "league_item_sets.views.index"),
 	url(r'^user/', include('user_extension.urls', namespace='user')),
     url(r'^admin/', include(admin.site.urls)),
 ]

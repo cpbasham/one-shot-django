@@ -9,8 +9,8 @@
 <body>
   <div class="site-container">
     <nav>
-      <a href="{% url 'user:home' %}">Home</a>
-      {% if logged_in %}
+      <a href="{% url 'user:itemsets:index' %}">Item Sets</a>
+      {% if request.user.is_authenticated %}
         <form name='logout' action="{% url 'user:logout' %}" method="post" style="display:none;">{% csrf_token %}</form>
         <a href="javascript:document.forms['logout'].submit()">Logout</a>
       {% else %}

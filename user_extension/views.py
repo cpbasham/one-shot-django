@@ -17,10 +17,6 @@ def handle_methods(*methods):
 		return wrapper
 	return decorator
 
-
-def index(request):
-	return render(request, 'user_extension/index.html', {'user': request.user, 'logged_in': request.user.is_authenticated()})
-
 @handle_methods("POST")
 def login(request):
 	if request.user.is_authenticated():
@@ -53,7 +49,7 @@ def post_register(request):
 		User.objects.create_user(username=username, password=password)
 		user = auth.authenticate(username=username, password=password)
 		auth.login(request, user)
-		return HttpResponse("Registration POSTED")
+		return redirect("user:home")
 	else:
 		return render(request, 'user_extension/register.html', {'form': form})
 

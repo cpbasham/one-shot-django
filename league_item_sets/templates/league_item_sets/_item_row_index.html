@@ -1,0 +1,45 @@
+<% @item_set.item_categories.each do |category| %>
+  <% @category = category %>
+
+  ----------------------------------------------------------------------------
+  <%= erb :'partials/_item_row', locals: {id: category.id} %>
+  <div class="item-set-row-container" data-row-id="<%=id%>">
+    <div class="item-set-row-delete" style="display: none;">X</div>
+    <input type="text" class="row-name" placeholder="Row Name" value="<%=@category.name if @category%>">
+    <div class='row-items'>
+      <ul class='item-set images'>
+
+        ----------------------------------------------------------------------------
+        <%= erb :'partials/_item_index' %>
+        <% @category.items.each do |item| %>
+          <% ar_id = item.id %>
+          <% item = @item_data.find() {|data| item.item_id == data["id"]} %>
+
+
+          ----------------------------------------------------------------------------
+          <%= erb :'partials/_item', locals: {item: item, ar_id: ar_id} %>
+          <%=
+            image = item["image"]
+            sprite = "#{image["sprite"]}"[0..-5]
+            title = "title=\"#{item["name"]}\""
+            cls = "class='sprite'"
+
+            data = "data-type='item' data-id='#{item["id"]}' data-purchasable='true'"
+            data += " data-ar-id='#{ar_id}'"
+            bgimg = "background-image: url(#{item_sprite_head}/#{image["sprite"]})"
+            bgpos = "background-position: #{-image["x"]-1}px #{-image["y"]}px"
+            style = "style=\"#{bgpos}; #{bgimg}\""
+            "<li><span #{data} #{title} #{cls} #{style}></span></li>"
+          %>
+          ----------------------------------------------------------------------------
+
+        <% end %>
+        ----------------------------------------------------------------------------
+
+
+      </ul>
+    </div>
+  </div>
+  ----------------------------------------------------------------------------
+
+<% end %>
