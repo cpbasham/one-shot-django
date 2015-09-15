@@ -1,0 +1,24 @@
+<ul class="images">
+  {% for item in items %}
+    {%if !item["gold"]["purchasable"] %}{% pass %}{% endif %}
+    <li>
+
+
+      <%= erb :'partials/images/items/_show', locals: {item: item} %>
+      <%=
+        image = item["image"]
+        sprite = "#{image["sprite"]}"[0..-5]
+        title = "title=\"#{item["name"]}\""
+        cls = "class='sprite'"
+
+        data = "data-type='item' data-id='#{item["id"]}' data-purchasable='true'"
+        bgimg = "background-image: url(#{item_sprite_head}/#{image["sprite"]})"
+        bgpos = "background-position: #{-image["x"]-1}px #{-image["y"]}px"
+        style = "style=\"#{bgpos}; #{bgimg}\""
+        "<span #{data} #{title} #{cls} #{style}></span>"
+      %>
+
+
+    </li>
+  <% end %>
+</ul>
